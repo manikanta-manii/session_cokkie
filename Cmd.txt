@@ -1,0 +1,926 @@
+  name: "s1",
+  demo_id: 4,
+  created_at: Wed, 13 Mar 2024 16:51:07.058890000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 16:51:07.058890000 UTC +00:00>,
+ #<Subdemo:0x000002397f6e9b18
+  id: 2,
+  name: "s2",
+  demo_id: 4,
+  created_at: Wed, 13 Mar 2024 16:51:21.299398000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 16:51:21.299398000 UTC +00:00>]
+irb(main):019>
+^C
+irb(main):019> exit
+rc_file is deprecated, please use rc_files instead.
+Terminate batch job (Y/N)? Y
+PS F:\associations> rails g model author name:string
+      invoke  active_record
+      create    db/migrate/20240313171050_create_authors.rb
+      create    app/models/author.rb
+      invoke    test_unit
+      create      test/models/author_test.rb
+      create      test/fixtures/authors.yml
+PS F:\associations> rails g model book name:string
+      invoke  active_record
+      create    db/migrate/20240313171105_create_books.rb
+      create    app/models/book.rb
+      invoke    test_unit
+      create      test/models/book_test.rb
+      create      test/fixtures/books.yml
+PS F:\associations> rails db:migrate:redo
+== 20240313160636 CreateSubdemos: reverting ===================================
+-- drop_table(:subdemos)
+   -> 0.0036s
+== 20240313160636 CreateSubdemos: reverted (0.0139s) ==========================
+
+== 20240313160636 CreateSubdemos: migrating ===================================
+-- create_table(:subdemos)
+   -> 0.0027s
+== 20240313160636 CreateSubdemos: migrated (0.0035s) ==========================
+
+== 20240313171050 CreateAuthors: migrating ====================================
+-- create_table(:authors)
+   -> 0.0272s
+== 20240313171050 CreateAuthors: migrated (0.0277s) ===========================
+
+== 20240313171105 CreateBooks: migrating ======================================
+-- create_table(:books)
+   -> 0.0400s
+== 20240313171105 CreateBooks: migrated (0.0408s) =============================
+
+PS F:\associations> rails c
+Loading development environment (Rails 7.1.3.2)
+rc_file is deprecated, please use rc_files instead.
+irb(main):001> Authors
+(irb):1:in `<main>': uninitialized constant Authors (NameError)
+
+Authors
+^^^^^^^
+irb(main):002> Author
+=> Author (call 'Author.connection' to establish a connection)
+irb(main):003> Author.connection
+=> 
+#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000017583f3c308
+ @advisory_locks_enabled=true,
+ @config=
+  {:adapter=>"sqlite3",
+   :pool=>5,
+   :timeout=>5000,
+   :database=>"F:/associations/storage/development.sqlite3",
+   :strict=>true},
+ @connection_parameters=
+  {:adapter=>"sqlite3",
+   :pool=>5,
+   :timeout=>5000,
+   :database=>"F:/associations/storage/development.sqlite3",
+   :strict=>true,
+   :results_as_hash=>true},
+ @default_timezone=nil,
+ @idle_since=1441060.6610929,
+ @instrumenter=
+  #<ActiveSupport::Notifications::Instrumenter:0x000001758575ccf8
+   @id="b2391d068b210b162382",
+   @notifier=#<ActiveSupport::Notifications::Fanout (19 patterns)>>,
+ @lock=ActiveSupport::Concurrency::NullLock,
+ @logger=
+  #<ActiveSupport::BroadcastLogger:0x0000017584b867d0
+   @broadcasts=
+    [#<ActiveSupport::Logger:0x00000175fc83b918
+      @default_formatter=#<Logger::Formatter:0x0000017584b8c590 @datetime_format=nil>,
+      @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x0000017584b86eb0 @datetime_format=nil>,    
+      @level=0,
+      @local_level_key=:logger_thread_safe_level_14220,
+      @logdev=
+       #<Logger::LogDevice:0x00000175fc83d0d8
+        @binmode=false,
+        @dev=#<File:F:/associations/log/development.log>,
+        @filename="F:/associations/log/development.log",
+        @mon_data=#<Monitor:0x0000017584b8c360>,
+        @mon_data_owner_object_id=4240,
+        @shift_age=1,
+        @shift_period_suffix="%Y%m%d",
+        @shift_size=104857600>,
+      @progname=nil>,
+     #<ActiveSupport::Logger:0x0000017584d1aa60
+      @default_formatter=#<Logger::Formatter:0x00000175839fb1a0 @datetime_format=nil>,
+      @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x00000175839fafe8 @datetime_format=nil>,    
+      @level=0,
+      @logdev=
+       #<Logger::LogDevice:0x0000017584d1a970
+        @binmode=false,
+        @dev=#<IO:<STDERR>>,
+        @filename=nil,
+        @mon_data=#<Monitor:0x00000175839fb0d8>,
+        @mon_data_owner_object_id=14200,
+        @shift_age=nil,
+        @shift_period_suffix=nil,
+        @shift_size=nil>,
+      @progname=nil>],
+   @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x0000017584b86eb0 @datetime_format=nil>,       
+   @progname="Broadcast">,
+ @memory_database=false,
+ @owner=#<Thread:0x00000175fada9ff0 run>,
+ @pool=
+  #<ActiveRecord::ConnectionAdapters::ConnectionPool:0x0000017585779d80
+   @async_executor=nil,
+   @automatic_reconnect=true,
+   @available=
+    #<ActiveRecord::ConnectionAdapters::ConnectionPool::ConnectionLeasingQueue:0x0000017585046fe0      
+     @cond=
+      #<MonitorMixin::ConditionVariable:0x0000017583a1fe10
+       @cond=#<Thread::ConditionVariable:0x0000017583a1fd98>,
+       @monitor=#<Monitor:0x00000175857506b0>>,
+     @lock=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x0000017585779d80 ...>,
+     @num_waiting=0,
+     @queue=[]>,
+   @checkout_timeout=5.0,
+   @connections=[#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000017583f3c308 ...>],
+   @db_config=
+    #<ActiveRecord::DatabaseConfigurations::HashConfig:0x0000017584c07678
+     @configuration_hash=
+      {:adapter=>"sqlite3", :pool=>5, :timeout=>5000, :database=>"storage/development.sqlite3"},       
+     @env_name="development",
+     @name="primary">,
+   @idle_timeout=300.0,
+   @lock_thread=false,
+   @mon_data=#<Monitor:0x00000175857506b0>,
+   @mon_data_owner_object_id=14160,
+   @now_connecting=0,
+   @pool_config=
+    #<ActiveRecord::ConnectionAdapters::PoolConfig:0x000001758504b180
+     @_mutex=#<Thread::Mutex:0x000001758575f9f8>,
+     @connection_class=ActiveRecord::Base,
+     @db_config=
+      #<ActiveRecord::DatabaseConfigurations::HashConfig:0x0000017584c07678
+       @configuration_hash=
+        {:adapter=>"sqlite3", :pool=>5, :timeout=>5000, :database=>"storage/development.sqlite3"},     
+       @env_name="development",
+       @name="primary">,
+     @pool=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x0000017585779d80 ...>,
+     @role=:writing,
+     @schema_reflection=
+      #<ActiveRecord::ConnectionAdapters::SchemaReflection:0x000001758547f940
+       @cache=
+        #<ActiveRecord::ConnectionAdapters::SchemaCache:0x0000017586ad5000
+         @columns={},
+         @columns_hash={},
+         @data_sources={},
+         @database_version=
+          #<ActiveRecord::ConnectionAdapters::AbstractAdapter::Version:0x0000017584edc9e8
+           @full_version_string=nil,
+           @version=[3, 45, 1]>,
+         @indexes={},
+         @primary_keys={},
+         @version=nil>,
+       @cache_path="db/schema_cache.yml">,
+     @shard=:default>,
+   @query_cache_enabled=
+    #<Concurrent::Map:0x00000175857505c0 entries=0 default_proc=#<Proc:0x0000017585750570 C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activerecord-7.1.3.2/lib/active_record/connection_adapters/abstract/query_cache.rb:35>>,
+   @reaper=
+    #<ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper:0x0000017583a1faf0
+     @frequency=60.0,
+     @pool=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x0000017585779d80 ...>>,
+   @role=:writing,
+   @shard=:default,
+   @size=5,
+   @thread_cached_conns=#<Concurrent::Map:0x0000017585750098 entries=1 default_proc=nil>,
+   @threads_blocking_new_connections=0>,
+ @prepared_statements=true,
+ @query_cache={},
+ @query_cache_enabled=false,
+ @query_cache_max_size=100,
+ @raw_connection=
+  #<SQLite3::Database:0x000001758547d640
+   @authorizer=nil,
+   @busy_handler=nil,
+   @collations={},
+   @default_transaction_mode=:deferred,
+   @encoding=#<Encoding:UTF-8>,
+   @functions={},
+   @readonly=false,
+   @results_as_hash=true,
+   @tracefunc=nil,
+   @type_translation=nil,
+   @type_translator=
+    #<Proc:0x0000017584c07808 C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/sqlite3-1.7.2-x64-mingw-ucrt/lib/sqlite3/database.rb:747 (lambda)>>,
+ @raw_connection_dirty=false,
+ @schema_cache=
+  #<ActiveRecord::ConnectionAdapters::BoundSchemaReflection:0x000001758547f8c8
+   @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000017583f3c308 ...>,
+   @schema_reflection=
+    #<ActiveRecord::ConnectionAdapters::SchemaReflection:0x000001758547f940
+     @cache=
+      #<ActiveRecord::ConnectionAdapters::SchemaCache:0x0000017586ad5000
+       @columns={},
+       @columns_hash={},
+       @data_sources={},
+       @database_version=
+        #<ActiveRecord::ConnectionAdapters::AbstractAdapter::Version:0x0000017584edc9e8
+         @full_version_string=nil,
+         @version=[3, 45, 1]>,
+       @indexes={},
+       @primary_keys={},
+       @version=nil>,
+     @cache_path="db/schema_cache.yml">>,
+ @statements=
+  #<ActiveRecord::ConnectionAdapters::SQLite3Adapter::StatementPool:0x00000175849506c8
+   @cache={23328=>{}},
+   @statement_limit=1000>,
+ @transaction_manager=
+  #<ActiveRecord::ConnectionAdapters::TransactionManager:0x0000017586ad5140
+   @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000017583f3c308 ...>,
+   @has_unmaterialized_transactions=false,
+   @lazy_transactions_enabled=true,
+   @materializing_transactions=false,
+   @stack=[]>,
+ @unconfigured_connection=nil,
+ @use_insert_returning=true,
+ @verified=nil,
+ @visitor=
+  #<Arel::Visitors::SQLite:0x0000017584950cb8
+   @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x0000017583f3c308 ...>,
+   @dispatch={}>>
+irb(main):004> a1=Author.create(name:"Author1")
+  TRANSACTION (0.0ms)  begin transaction
+  Author Create (0.7ms)  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "Author1"], ["created_at", "2024-03-13 17:15:24.074980"], ["updated_at", "2024-03-13 17:15:24.074980"]]
+  TRANSACTION (0.1ms)  commit transaction
+=> 
+#<Author:0x0000017584c72d88
+...
+irb(main):005> a2=Author,create(name:"Author2")
+(irb):5:in `<main>': undefined method `create' for main:Object (NoMethodError)
+
+a2=Author,create(name:"Author2")
+          ^^^^^^
+irb(main):006> a2=Author.create(name:"Author2")
+  TRANSACTION (0.0ms)  begin transaction
+  Author Create (0.4ms)  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "Author2"], ["created_at", "2024-03-13 17:15:45.706830"], ["updated_at", "2024-03-13 17:15:45.706830"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Author:0x0000017583f380c8
+...
+irb(main):007> Author.all
+  Author Load (0.2ms)  SELECT "authors".* FROM "authors" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=> 
+[#<Author:0x0000017583f38ac8
+  id: 1,
+  name: "Author1",
+  created_at: Wed, 13 Mar 2024 17:15:24.074980000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:15:24.074980000 UTC +00:00>,
+ #<Author:0x0000017583f38848
+  id: 2,
+  name: "Author2",
+  created_at: Wed, 13 Mar 2024 17:15:45.706830000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:15:45.706830000 UTC +00:00>]
+irb(main):008> a1.book.create("book1")
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_methods.rb:489:in `method_missing': undefined method `book' for #<Author id: 1, name: "Author1", created_at: "2024-03-13 17:15:24.074980000 +0000", updated_at: "2024-03-13 17:15:24.074980000 +0000"> (NoMethodError)
+Did you mean?  books
+irb(main):009> a1.Book.create("book1")
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_methods.rb:489:in `method_missing': undefined method `Book' for #<Author id: 1, name: "Author1", created_at: "2024-03-13 17:15:24.074980000 +0000", updated_at: "2024-03-13 17:15:24.074980000 +0000"> (NoMethodError)
+Did you mean?  books
+irb(main):010> a1.Book.create(name:"book1")
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_methods.rb:489:in `method_missing': undefined method `Book' for #<Author id: 1, name: "Author1", created_at: "2024-03-13 17:15:24.074980000 +0000", updated_at: "2024-03-13 17:15:24.074980000 +0000"> (NoMethodError)
+Did you mean?  books
+irb(main):011> a1.create_Book(name:"book1")
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_methods.rb:489:in `method_missing': undefined method `create_Book' for #<Author id: 1, name: "Author1", created_at: "2024-03-13 17:15:24.074980000 +0000", updated_at: "2024-03-13 17:15:24.074980000 +0000"> (NoMethodError)
+Did you mean?  created_at
+irb(main):012> a1
+=>
+#<Author:0x0000017584c72d88
+ id: 1,
+ name: "Author1",
+ created_at: Wed, 13 Mar 2024 17:15:24.074980000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:15:24.074980000 UTC +00:00>
+irb(main):013> a1.books="book1"
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activerecord-7.1.3.2/lib/active_record/associations/collection_association.rb:241:in `replace': undefined method `each' for "book1":String (NoMethodError)
+
+        other_array.each { |val| raise_on_type_mismatch!(val) }
+                   ^^^^^
+irb(main):014> a1.books=[name:"book1"]
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activerecord-7.1.3.2/lib/active_record/associations/association.rb:314:in `raise_on_type_mismatch!': Book(#231620) expected, got {:name=>"book1"} which is an instance of Hash(#2480) (ActiveRecord::AssociationTypeMismatch)
+irb(main):015> a1.books.create("book1")
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_assignment.rb:30:in `assign_attributes': When assigning attributes, you must pass a hash as an argument, String passed. (ArgumentError)
+
+        raise ArgumentError, "When assigning attributes, you must pass a hash as an argument, #{new_attributes.class} passed."
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+irb(main):016> a1.books.create(name:"book1")
+  TRANSACTION (0.0ms)  begin transaction
+  Book Create (0.5ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book1"], ["author_id", 1], ["created_at", "2024-03-13 17:19:16.174451"], ["updated_at", "2024-03-13 17:19:16.174451"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Book:0x0000017586d0ab40
+ id: 1,
+ name: "book1",
+ author_id: 1,
+ created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>
+irb(main):017> a1.Books.create(name:"book2")
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_methods.rb:489:in `method_missing': undefined method `Books' for #<Author id: 1, name: "Author1", created_at: "2024-03-13 17:15:24.074980000 +0000", updated_at: "2024-03-13 17:15:24.074980000 +0000"> (NoMethodError)
+Did you mean?  books
+irb(main):018> a1.books.create(name:"book2")
+  TRANSACTION (0.0ms)  begin transaction
+  Book Create (0.3ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book2"], ["author_id", 1], ["created_at", "2024-03-13 17:19:52.948858"], ["updated_at", "2024-03-13 17:19:52.948858"]]
+  TRANSACTION (0.1ms)  commit transaction
+=> 
+#<Book:0x0000017587740b50
+ id: 2,
+ name: "book2",
+ author_id: 1,
+ created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>
+irb(main):019> a1.books.create(name:"book3")
+  TRANSACTION (0.1ms)  begin transaction
+  Book Create (0.4ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book3"], ["author_id", 1], ["created_at", "2024-03-13 17:20:07.296751"], ["updated_at", "2024-03-13 17:20:07.296751"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Book:0x0000017586d04740
+ id: 3,
+ name: "book3",
+ author_id: 1,
+ created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>
+irb(main):020> a1.books
+  Book Load (0.2ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ? /* loading for pp */ LIMIT ?  [["author_id", 1], ["LIMIT", 11]]
+=> 
+[#<Book:0x000001758774d850
+  id: 1,
+  name: "book1",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>,
+ #<Book:0x000001758774d710
+  id: 2,
+  name: "book2",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>,
+ #<Book:0x000001758774d5d0
+  id: 3,
+  name: "book3",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>]
+irb(main):021> a2.books.create(name:"book4")
+  TRANSACTION (0.0ms)  begin transaction
+  Book Create (0.4ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book4"], ["author_id", 2], ["created_at", "2024-03-13 17:20:36.137007"], ["updated_at", "2024-03-13 17:20:36.137007"]]
+  TRANSACTION (0.1ms)  commit transaction
+=> 
+#<Book:0x000001758708c318
+ id: 4,
+ name: "book4",
+ author_id: 2,
+ created_at: Wed, 13 Mar 2024 17:20:36.137007000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:20:36.137007000 UTC +00:00>
+irb(main):022> Author.create(name:"a3").books.create("book5")
+  TRANSACTION (0.0ms)  begin transaction
+  Author Create (0.4ms)  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "a3"], ["created_at", "2024-03-13 17:21:19.764409"], ["updated_at", "2024-03-13 17:21:19.764409"]]
+  TRANSACTION (0.1ms)  commit transaction
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activemodel-7.1.3.2/lib/active_model/attribute_assignment.rb:30:in `assign_attributes': When assigning attributes, you must pass a hash as an argument, String passed. (ArgumentError)
+
+        raise ArgumentError, "When assigning attributes, you must pass a hash as an argument, #{new_attributes.class} passed."
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+irb(main):023> Author.create(name:"a3").books.create(name:"book5")
+  TRANSACTION (0.1ms)  begin transaction
+  Author Create (0.5ms)  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "a3"], ["created_at", "2024-03-13 17:21:25.445064"], ["updated_at", "2024-03-13 17:21:25.445064"]]
+  TRANSACTION (0.1ms)  commit transaction
+  TRANSACTION (0.1ms)  begin transaction
+  Book Create (0.5ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book5"], ["author_id", 4], ["created_at", "2024-03-13 17:21:25.454960"], ["updated_at", "2024-03-13 17:21:25.454960"]]
+  TRANSACTION (0.1ms)  commit transaction
+=> 
+#<Book:0x000001758786eb08
+ id: 5,
+ name: "book5",
+ author_id: 4,
+ created_at: Wed, 13 Mar 2024 17:21:25.454960000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:21:25.454960000 UTC +00:00>
+irb(main):024> Author.create(name:"a3").books.create(name:"book6")
+  TRANSACTION (0.0ms)  begin transaction
+  Author Create (0.4ms)  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "a3"], ["created_at", "2024-03-13 17:21:59.320868"], ["updated_at", "2024-03-13 17:21:59.320868"]]
+  TRANSACTION (0.1ms)  commit transaction
+  TRANSACTION (0.0ms)  begin transaction
+  Book Create (0.4ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book6"], ["author_id", 5], ["created_at", "2024-03-13 17:21:59.323021"], ["updated_at", "2024-03-13 17:21:59.323021"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Book:0x000001758793f640
+ id: 6,
+ name: "book6",
+ author_id: 5,
+ created_at: Wed, 13 Mar 2024 17:21:59.323021000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:21:59.323021000 UTC +00:00>
+irb(main):025> Author.find_by(id: 5)
+  Author Load (0.1ms)  SELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+=> 
+#<Author:0x0000017587601b90
+ id: 5,
+ name: "a3",
+ created_at: Wed, 13 Mar 2024 17:21:59.320868000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:21:59.320868000 UTC +00:00>
+irb(main):026> Author.find_by(id: 5).books.create(name:"book7")
+  Author Load (0.1ms)  SELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+  TRANSACTION (0.0ms)  begin transaction
+  Book Create (0.3ms)  INSERT INTO "books" ("name", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["name", "book7"], ["author_id", 5], ["created_at", "2024-03-13 17:23:01.509345"], ["updated_at", "2024-03-13 17:23:01.509345"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Book:0x00000175877c8c08
+ id: 7,
+ name: "book7",
+ author_id: 5,
+ created_at: Wed, 13 Mar 2024 17:23:01.509345000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:23:01.509345000 UTC +00:00>
+irb(main):027> Author.find_by(id: 5).books
+  Author Load (0.1ms)  SELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?  [["id", 5], ["LIMIT", 1]]
+  Book Load (0.0ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ? /* loading for pp */ LIMIT ?  [["author_id", 5], ["LIMIT", 11]]
+=>
+[#<Book:0x000001758788f790
+  id: 6,
+  name: "book6",
+  author_id: 5,
+  created_at: Wed, 13 Mar 2024 17:21:59.323021000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:21:59.323021000 UTC +00:00>,
+ #<Book:0x000001758788f650
+  id: 7,
+  name: "book7",
+  author_id: 5,
+  created_at: Wed, 13 Mar 2024 17:23:01.509345000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:23:01.509345000 UTC +00:00>]
+irb(main):028> a1.books
+  Book Load (0.1ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ? /* loading for pp */ LIMIT ?  [["author_id", 1], ["LIMIT", 11]]
+=> 
+[#<Book:0x000001758795a8c8
+  id: 1,
+  name: "book1",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>,
+ #<Book:0x000001758795a788
+  id: 2,
+  name: "book2",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>,
+ #<Book:0x000001758795a648
+  id: 3,
+  name: "book3",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>]
+irb(main):029> a1.books.destroy
+=> nil
+irb(main):030> a1.books
+  Book Load (0.1ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ? /* loading for pp */ LIMIT ?  [["author_id", 1], ["LIMIT", 11]]
+=> 
+[#<Book:0x00000175879558c8
+  id: 1,
+  name: "book1",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>,
+ #<Book:0x0000017587955788
+  id: 2,
+  name: "book2",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>,
+ #<Book:0x0000017587955648
+  id: 3,
+  name: "book3",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>]
+irb(main):031> a1.destroy
+  TRANSACTION (0.0ms)  begin transaction
+  Author Destroy (0.6ms)  DELETE FROM "authors" WHERE "authors"."id" = ?  [["id", 1]]
+  TRANSACTION (0.0ms)  rollback transaction
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/sqlite3-1.7.2-x64-mingw-ucrt/lib/sqlite3/statement.rb:108:in `step': SQLite3::ConstraintException: FOREIGN KEY constraint failed (ActiveRecord::InvalidForeignKey)     
+C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/sqlite3-1.7.2-x64-mingw-ucrt/lib/sqlite3/statement.rb:108:in `step': FOREIGN KEY constraint failed (SQLite3::ConstraintException)
+irb(main):032> a1.books
+  Book Load (0.1ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ? /* loading for pp */ LIMIT ?  [["author_id", 1], ["LIMIT", 11]]
+=> 
+[#<Book:0x0000017587885150
+  id: 1,
+  name: "book1",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>,
+ #<Book:0x0000017587885010
+  id: 2,
+  name: "book2",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>,
+ #<Book:0x0000017587884ed0
+  id: 3,
+  name: "book3",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>]
+irb(main):033> a1.books
+  Book Load (0.1ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ? /* loading for pp */ LIMIT ?  [["author_id", 1], ["LIMIT", 11]]
+=> 
+[#<Book:0x000001758795b688
+  id: 1,
+  name: "book1",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>,
+ #<Book:0x000001758795b548
+  id: 2,
+  name: "book2",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>,
+ #<Book:0x000001758795b408
+  id: 3,
+  name: "book3",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>]
+irb(main):034> a1.books.destroy_all
+  Book Load (0.1ms)  SELECT "books".* FROM "books" WHERE "books"."author_id" = ?  [["author_id", 1]]   
+  TRANSACTION (0.0ms)  begin transaction
+  Book Destroy (0.3ms)  DELETE FROM "books" WHERE "books"."id" = ?  [["id", 1]]
+  Book Destroy (0.0ms)  DELETE FROM "books" WHERE "books"."id" = ?  [["id", 2]]
+  Book Destroy (0.0ms)  DELETE FROM "books" WHERE "books"."id" = ?  [["id", 3]]
+  TRANSACTION (0.0ms)  commit transaction
+=> 
+[#<Book:0x0000017586d0ab40
+  id: 1,
+  name: "book1",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:16.174451000 UTC +00:00>,
+ #<Book:0x0000017587740b50
+  id: 2,
+  name: "book2",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:19:52.948858000 UTC +00:00>,
+ #<Book:0x0000017586d04740
+  id: 3,
+  name: "book3",
+  author_id: 1,
+  created_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:20:07.296751000 UTC +00:00>]
+irb(main):035> a1.books
+=> []
+irb(main):036> exit
+rc_file is deprecated, please use rc_files instead.
+PS F:\associations> rails g model album name:string
+      invoke  active_record
+      create    db/migrate/20240313172601_create_albums.rb
+      create    app/models/album.rb
+      invoke    test_unit
+      create      test/models/album_test.rb
+      create      test/fixtures/albums.yml
+PS F:\associations> rails g model language name:string
+      invoke  active_record
+      create    db/migrate/20240313172621_create_languages.rb
+      create    app/models/language.rb
+      invoke    test_unit
+      create      test/models/language_test.rb
+      create      test/fixtures/languages.yml
+PS F:\associations> rails g model album_language
+      invoke  active_record
+      create    db/migrate/20240313172648_create_album_languages.rb
+      create    app/models/album_language.rb
+      invoke    test_unit
+      create      test/models/album_language_test.rb
+      create      test/fixtures/album_languages.yml
+PS F:\associations> rails db:migrate:redo
+== 20240313171105 CreateBooks: reverting ======================================
+-- drop_table(:books)
+   -> 0.0019s
+== 20240313171105 CreateBooks: reverted (0.0150s) =============================
+
+== 20240313171105 CreateBooks: migrating ======================================
+-- create_table(:books)
+   -> 0.0208s
+== 20240313171105 CreateBooks: migrated (0.0230s) =============================
+
+== 20240313172601 CreateAlbums: migrating =====================================
+-- create_table(:albums)
+   -> 0.0155s
+== 20240313172601 CreateAlbums: migrated (0.0161s) ============================
+
+== 20240313172621 CreateLanguages: migrating ==================================
+-- create_table(:languages)
+   -> 0.0025s
+== 20240313172621 CreateLanguages: migrated (0.0038s) =========================
+
+== 20240313172648 CreateAlbumLanguages: migrating =============================
+-- create_table(:album_languages)
+   -> 0.0070s
+== 20240313172648 CreateAlbumLanguages: migrated (0.0077s) ====================
+
+PS F:\associations> rails c
+Loading development environment (Rails 7.1.3.2)
+rc_file is deprecated, please use rc_files instead.
+irb(main):001> Album
+=> Album (call 'Album.connection' to establish a connection)
+irb(main):002> Album.connection
+=> 
+#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000001f712d79ed8
+ @advisory_locks_enabled=true,
+ @config=
+  {:adapter=>"sqlite3",
+   :pool=>5,
+   :timeout=>5000,
+   :database=>"F:/associations/storage/development.sqlite3",
+   :strict=>true},
+ @connection_parameters=
+  {:adapter=>"sqlite3",
+   :pool=>5,
+   :timeout=>5000,
+   :database=>"F:/associations/storage/development.sqlite3",
+   :strict=>true,
+   :results_as_hash=>true},
+ @default_timezone=nil,
+ @idle_since=1442139.1907676,
+ @instrumenter=
+  #<ActiveSupport::Notifications::Instrumenter:0x000001f7144ea018
+   @id="8a6431b300cea80f0ff7",
+   @notifier=#<ActiveSupport::Notifications::Fanout (19 patterns)>>,
+ @lock=ActiveSupport::Concurrency::NullLock,
+ @logger=
+  #<ActiveSupport::BroadcastLogger:0x000001f7139952f8
+   @broadcasts=
+    [#<ActiveSupport::Logger:0x000001f70b76c448
+      @default_formatter=#<Logger::Formatter:0x000001f71399b0b8 @datetime_format=nil>,
+      @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x000001f7139956b8 @datetime_format=nil>,    
+      @level=0,
+      @local_level_key=:logger_thread_safe_level_14220,
+      @logdev=
+       #<Logger::LogDevice:0x000001f70b76dbb8
+        @binmode=false,
+        @dev=#<File:F:/associations/log/development.log>,
+        @filename="F:/associations/log/development.log",
+        @mon_data=#<Monitor:0x000001f71399aeb0>,
+        @mon_data_owner_object_id=4240,
+        @shift_age=1,
+        @shift_period_suffix="%Y%m%d",
+        @shift_size=104857600>,
+      @progname=nil>,
+     #<ActiveSupport::Logger:0x000001f713ba8720
+      @default_formatter=#<Logger::Formatter:0x000001f7127b92a0 @datetime_format=nil>,
+      @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x000001f7127b9070 @datetime_format=nil>,    
+      @level=0,
+      @logdev=
+       #<Logger::LogDevice:0x000001f713ba86d0
+        @binmode=false,
+        @dev=#<IO:<STDERR>>,
+        @filename=nil,
+        @mon_data=#<Monitor:0x000001f7127b9160>,
+        @mon_data_owner_object_id=14200,
+        @shift_age=nil,
+        @shift_period_suffix=nil,
+        @shift_size=nil>,
+      @progname=nil>],
+   @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x000001f7139956b8 @datetime_format=nil>,       
+   @progname="Broadcast">,
+ @memory_database=false,
+ @owner=#<Thread:0x000001f709dfa050 run>,
+ @pool=
+  #<ActiveRecord::ConnectionAdapters::ConnectionPool:0x000001f714509ee0
+   @async_executor=nil,
+   @automatic_reconnect=true,
+   @available=
+    #<ActiveRecord::ConnectionAdapters::ConnectionPool::ConnectionLeasingQueue:0x000001f713e96900      
+     @cond=
+      #<MonitorMixin::ConditionVariable:0x000001f7127de078
+       @cond=#<Thread::ConditionVariable:0x000001f7127de000>,
+       @monitor=#<Monitor:0x000001f7127de780>>,
+     @lock=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x000001f714509ee0 ...>,
+     @num_waiting=0,
+     @queue=[]>,
+   @checkout_timeout=5.0,
+   @connections=[#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000001f712d79ed8 ...>],
+   @db_config=
+    #<ActiveRecord::DatabaseConfigurations::HashConfig:0x000001f713a22ec8
+     @configuration_hash=
+      {:adapter=>"sqlite3", :pool=>5, :timeout=>5000, :database=>"storage/development.sqlite3"},       
+     @env_name="development",
+     @name="primary">,
+   @idle_timeout=300.0,
+   @lock_thread=false,
+   @mon_data=#<Monitor:0x000001f7127de780>,
+   @mon_data_owner_object_id=14160,
+   @now_connecting=0,
+   @pool_config=
+    #<ActiveRecord::ConnectionAdapters::PoolConfig:0x000001f713e9aa50
+     @_mutex=#<Thread::Mutex:0x000001f7144ec9a8>,
+     @connection_class=ActiveRecord::Base,
+     @db_config=
+      #<ActiveRecord::DatabaseConfigurations::HashConfig:0x000001f713a22ec8
+       @configuration_hash=
+        {:adapter=>"sqlite3", :pool=>5, :timeout=>5000, :database=>"storage/development.sqlite3"},     
+       @env_name="development",
+       @name="primary">,
+     @pool=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x000001f714509ee0 ...>,
+     @role=:writing,
+     @schema_reflection=
+      #<ActiveRecord::ConnectionAdapters::SchemaReflection:0x000001f7138bb260
+       @cache=
+        #<ActiveRecord::ConnectionAdapters::SchemaCache:0x000001f7159e4428
+         @columns={},
+         @columns_hash={},
+         @data_sources={},
+         @database_version=
+          #<ActiveRecord::ConnectionAdapters::AbstractAdapter::Version:0x000001f713788e10
+           @full_version_string=nil,
+           @version=[3, 45, 1]>,
+         @indexes={},
+         @primary_keys={},
+         @version=nil>,
+       @cache_path="db/schema_cache.yml">,
+     @shard=:default>,
+   @query_cache_enabled=
+    #<Concurrent::Map:0x000001f7127de640 entries=0 default_proc=#<Proc:0x000001f7127de5f0 C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/activerecord-7.1.3.2/lib/active_record/connection_adapters/abstract/query_cache.rb:35>>,
+   @reaper=
+    #<ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper:0x000001f7127dde98
+     @frequency=60.0,
+     @pool=#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x000001f714509ee0 ...>>,
+   @role=:writing,
+   @shard=:default,
+   @size=5,
+   @thread_cached_conns=#<Concurrent::Map:0x000001f7127de230 entries=1 default_proc=nil>,
+   @threads_blocking_new_connections=0>,
+ @prepared_statements=true,
+ @query_cache={},
+ @query_cache_enabled=false,
+ @query_cache_max_size=100,
+ @raw_connection=
+  #<SQLite3::Database:0x000001f7138b7cf0
+   @authorizer=nil,
+   @busy_handler=nil,
+   @collations={},
+   @default_transaction_mode=:deferred,
+   @encoding=#<Encoding:UTF-8>,
+   @functions={},
+   @readonly=false,
+   @results_as_hash=true,
+   @tracefunc=nil,
+   @type_translation=nil,
+   @type_translator=
+    #<Proc:0x000001f713a26ff0 C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/sqlite3-1.7.2-x64-mingw-ucrt/lib/sqlite3/database.rb:747 (lambda)>>,
+ @raw_connection_dirty=false,
+ @schema_cache=
+  #<ActiveRecord::ConnectionAdapters::BoundSchemaReflection:0x000001f7138bb198
+   @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000001f712d79ed8 ...>,
+   @schema_reflection=
+    #<ActiveRecord::ConnectionAdapters::SchemaReflection:0x000001f7138bb260
+     @cache=
+      #<ActiveRecord::ConnectionAdapters::SchemaCache:0x000001f7159e4428
+       @columns={},
+       @columns_hash={},
+       @data_sources={},
+       @database_version=
+        #<ActiveRecord::ConnectionAdapters::AbstractAdapter::Version:0x000001f713788e10
+         @full_version_string=nil,
+         @version=[3, 45, 1]>,
+       @indexes={},
+       @primary_keys={},
+       @version=nil>,
+     @cache_path="db/schema_cache.yml">>,
+ @statements=
+  #<ActiveRecord::ConnectionAdapters::SQLite3Adapter::StatementPool:0x000001f7138bc048
+   @cache={22240=>{}},
+   @statement_limit=1000>,
+ @transaction_manager=
+  #<ActiveRecord::ConnectionAdapters::TransactionManager:0x000001f7159e4568
+   @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000001f712d79ed8 ...>,
+   @has_unmaterialized_transactions=false,
+   @lazy_transactions_enabled=true,
+   @materializing_transactions=false,
+   @stack=[]>,
+ @unconfigured_connection=nil,
+ @use_insert_returning=true,
+ @verified=nil,
+ @visitor=
+  #<Arel::Visitors::SQLite:0x000001f7138bc598
+   @connection=#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x000001f712d79ed8 ...>,
+   @dispatch={}>>
+irb(main):003> Album
+=> Album(id: integer, name: string, created_at: datetime, updated_at: datetime)
+irb(main):004> Language
+=> Language(id: integer, name: string, created_at: datetime, updated_at: datetime)
+irb(main):005> AlbumLanguage
+=> AlbumLanguage(id: integer, album_id: integer, language_id: integer, created_at: datetime, updated_at: datetime)
+irb(main):006> a1=Album.create(name:"Googly")
+  TRANSACTION (0.0ms)  begin transaction
+  Album Create (0.5ms)  INSERT INTO "albums" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "Googly"], ["created_at", "2024-03-13 17:32:46.458637"], ["updated_at", "2024-03-13 17:32:46.458637"]]
+  TRANSACTION (0.1ms)  commit transaction
+=> 
+#<Album:0x000001f716368490
+...
+irb(main):007> a1
+=>
+#<Album:0x000001f716368490
+ id: 1,
+ name: "Googly",
+ created_at: Wed, 13 Mar 2024 17:32:46.458637000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:32:46.458637000 UTC +00:00>
+irb(main):008> l1=Language.create(name:"kannada")
+  TRANSACTION (0.0ms)  begin transaction
+  Language Create (0.4ms)  INSERT INTO "languages" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "kannada"], ["created_at", "2024-03-13 17:33:14.716990"], ["updated_at", "2024-03-13 17:33:14.716990"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Language:0x000001f715fd96f8
+...
+irb(main):009> l1
+=>
+#<Language:0x000001f715fd96f8
+ id: 1,
+ name: "kannada",
+ created_at: Wed, 13 Mar 2024 17:33:14.716990000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:33:14.716990000 UTC +00:00>
+irb(main):010> Language.all
+  Language Load (0.1ms)  SELECT "languages".* FROM "languages" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=> 
+[#<Language:0x000001f71658e260
+  id: 1,
+  name: "kannada",
+  created_at: Wed, 13 Mar 2024 17:33:14.716990000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:33:14.716990000 UTC +00:00>]
+irb(main):011> Language.create(name:"Telugu")
+  TRANSACTION (0.0ms)  begin transaction
+  Language Create (0.3ms)  INSERT INTO "languages" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "Telugu"], ["created_at", "2024-03-13 17:33:41.882684"], ["updated_at", "2024-03-13 17:33:41.882684"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<Language:0x000001f715b7d208
+ id: 2,
+ name: "Telugu",
+ created_at: Wed, 13 Mar 2024 17:33:41.882684000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:33:41.882684000 UTC +00:00>
+irb(main):012> Language.create(name:"Tamil")
+  TRANSACTION (0.0ms)  begin transaction
+  Language Create (0.6ms)  INSERT INTO "languages" ("name", "created_at", "updated_at") VALUES (?, ?, ?) RETURNING "id"  [["name", "Tamil"], ["created_at", "2024-03-13 17:33:47.160299"], ["updated_at", "2024-03-13 17:33:47.160299"]]
+  TRANSACTION (0.0ms)  commit transaction
+=>
+#<Language:0x000001f71658d360
+ id: 3,
+ name: "Tamil",
+ created_at: Wed, 13 Mar 2024 17:33:47.160299000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:33:47.160299000 UTC +00:00>
+irb(main):013> AlbumLanguage.all
+  AlbumLanguage Load (0.1ms)  SELECT "album_languages".* FROM "album_languages" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=> []
+irb(main):014> AlbumLanguage
+=> AlbumLanguage(id: integer, album_id: integer, language_id: integer, created_at: datetime, updated_at: datetime)
+irb(main):015> a1.album_languages.create(language_id: 1)
+  TRANSACTION (0.0ms)  begin transaction
+  Language Load (0.4ms)  SELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  AlbumLanguage Create (0.1ms)  INSERT INTO "album_languages" ("album_id", "language_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["album_id", 1], ["language_id", 1], ["created_at", "2024-03-13 17:35:41.840076"], ["updated_at", "2024-03-13 17:35:41.840076"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<AlbumLanguage:0x000001f7117e7390
+ id: 1,
+ album_id: 1,
+ language_id: 1,
+ created_at: Wed, 13 Mar 2024 17:35:41.840076000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:35:41.840076000 UTC +00:00>
+irb(main):016> a1.album_languages.create(language_id: 2)
+  TRANSACTION (0.0ms)  begin transaction
+  Language Load (0.5ms)  SELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
+  AlbumLanguage Create (0.1ms)  INSERT INTO "album_languages" ("album_id", "language_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["album_id", 1], ["language_id", 2], ["created_at", "2024-03-13 17:35:46.106786"], ["updated_at", "2024-03-13 17:35:46.106786"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<AlbumLanguage:0x000001f715b75a08
+ id: 2,
+ album_id: 1,
+ language_id: 2,
+ created_at: Wed, 13 Mar 2024 17:35:46.106786000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:35:46.106786000 UTC +00:00>
+irb(main):017> a1.album_languages.create(language_id: 3)
+  TRANSACTION (0.0ms)  begin transaction
+  Language Load (0.4ms)  SELECT "languages".* FROM "languages" WHERE "languages"."id" = ? LIMIT ?  [["id", 3], ["LIMIT", 1]]
+  AlbumLanguage Create (0.1ms)  INSERT INTO "album_languages" ("album_id", "language_id", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"  [["album_id", 1], ["language_id", 3], ["created_at", "2024-03-13 17:35:50.574298"], ["updated_at", "2024-03-13 17:35:50.574298"]]
+  TRANSACTION (0.1ms)  commit transaction
+=>
+#<AlbumLanguage:0x000001f712d74b18
+ id: 3,
+ album_id: 1,
+ language_id: 3,
+ created_at: Wed, 13 Mar 2024 17:35:50.574298000 UTC +00:00,
+ updated_at: Wed, 13 Mar 2024 17:35:50.574298000 UTC +00:00>
+irb(main):018> AlbumLanguage.all
+  AlbumLanguage Load (0.1ms)  SELECT "album_languages".* FROM "album_languages" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+=>
+[#<AlbumLanguage:0x000001f7164dd5c8
+  id: 1,
+  album_id: 1,
+  language_id: 1,
+  created_at: Wed, 13 Mar 2024 17:35:41.840076000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:35:41.840076000 UTC +00:00>,
+ #<AlbumLanguage:0x000001f7164dd488
+  id: 2,
+  album_id: 1,
+  language_id: 2,
+  created_at: Wed, 13 Mar 2024 17:35:46.106786000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:35:46.106786000 UTC +00:00>,
+ #<AlbumLanguage:0x000001f7164dd348
+  id: 3,
+  album_id: 1,
+  language_id: 3,
+  created_at: Wed, 13 Mar 2024 17:35:50.574298000 UTC +00:00,
+  updated_at: Wed, 13 Mar 2024 17:35:50.574298000 UTC +00:00>]
+irb(main):019>
